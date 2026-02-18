@@ -9,6 +9,6 @@ import java.time.LocalDateTime;
 
 @Repository
 public interface TaskRepository extends JpaRepository<Task, Long> {
-    Page<Task> findByCompleted(Boolean isCompleted, Pageable pageable);
+    Page<Task> findByCompleted(boolean isCompleted, Pageable pageable);
     Page<Task> findByDueDateBetween(LocalDateTime start, LocalDateTime end, Pageable pageable);
 }
