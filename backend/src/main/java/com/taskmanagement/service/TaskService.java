@@ -33,7 +33,7 @@ public class TaskService {
             Task task = taskOptional.get();
             task.setTitle(taskDetails.getTitle());
             task.setDescription(taskDetails.getDescription());
-            task.setCompleted(taskDetails.isCompleted());
+            task.setCompleted(taskDetails.getCompleted());
             return taskRepository.save(task);
         }
         return null;
@@ -49,6 +49,6 @@ public class TaskService {
 
     public List<Task> getTasksByStatus(boolean completed) {
         return taskRepository.findAll().stream()
-                .filter(task ->  task.isCompleted() == completed)
+                .filter(task ->  task.getCompleted() == completed)
                 .collect(java.util.stream.Collectors.toList());    }
 }
