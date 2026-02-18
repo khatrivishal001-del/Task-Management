@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import java.time.LocalDateTime;
 
 @Repository
-public interface TaskRepository extends JpaRepository<Task, Integer> {
-    Page<Task> findByIsCompleted(Boolean isCompleted, Pageable pageable);
+public interface TaskRepository extends JpaRepository<Task, Long> {
+    Page<Task> findByCompleted(Boolean isCompleted, Pageable pageable);
     Page<Task> findByDueDateBetween(LocalDateTime start, LocalDateTime end, Pageable pageable);
 }
