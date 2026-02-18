@@ -49,6 +49,6 @@ public class TaskService {
 
     public List<Task> getTasksByStatus(boolean completed) {
         return taskRepository.findAll().stream()
-                .filter(task ->isCompleted
+                .filter(task  task.isCompleted() == completed)
                 .collect(java.util.stream.Collectors.toList());    }
 }
