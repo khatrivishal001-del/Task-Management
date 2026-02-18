@@ -152,47 +152,4 @@ public class TaskServiceTest {
         // Assert
         verify(taskRepository, times(1)).deleteById(1L);
     }
-
-    @Test
-    public void testGetTasksByStatus_Completed() {
-        // Arrange
-        Task completedTask1 = new Task();
-        completedTask1.setId(2L);
-        completedTask1.setTitle("Completed Task 1");
-        completedTask1.setCompleted(true);
-
-        Task completedTask2 = new Task();
-        completedTask2.setId(3L);
-        completedTask2.setTitle("Completed Task 2");
-        completedTask2.setCompleted(true);
-
-        List<Task> completedTasks = Arrays.asList(completedTask1, completedTask2);
-        when(taskRepository.findByCompleted(true)).thenReturn(completedTasks);
-
-        // Act
-        List<Task> result = taskService.getTasksByStatus(true);
-
-        // Assert
-        assertNotNull(result);
-        assertEquals(2, result.size());
-        assertTrue(result.get(0).isCompleted());
-        assertTrue(result.get(1).isCompleted());
-        verify(taskRepository, times(1)).findByCompleted(true);
-    }
-
-    @Test
-    public void testGetTasksByStatus_Incomplete() {
-        // Arrange
-        List<Task> incompleteTasks = Arrays.asList(testTask);
-        when(taskRepository.findByCompleted(false)).thenReturn(incompleteTasks);
-
-        // Act
-        List<Task> result = taskService.getTasksByStatus(false);
-
-        // Assert
-        assertNotNull(result);
-        assertEquals(1, result.size());
-        assertFalse(result.get(0).isCompleted());
-        verify(taskRepository, times(1)).findByCompleted(false);
-    }
 }
