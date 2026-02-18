@@ -23,9 +23,7 @@ public class TaskService {
         return taskRepository.findById(id);
     }
 
-    public Task createTask(Task task) {
-        task.setCreatedAt(LocalDateTime.now());
-        task.setUpdatedAt(LocalDateTime.now());
+    public Task createTask(Task task) {        
         return taskRepository.save(task);
     }
 
@@ -36,7 +34,6 @@ public class TaskService {
             task.setTitle(taskDetails.getTitle());
             task.setDescription(taskDetails.getDescription());
             task.setCompleted(taskDetails.isCompleted());
-            task.setUpdatedAt(LocalDateTime.now());
             return taskRepository.save(task);
         }
         return null;
@@ -51,6 +48,7 @@ public class TaskService {
     }
 
     public List<Task> getTasksByStatus(boolean completed) {
-        return taskRepository.findByCompleted(completed);
-    }
+        return taskRepository.findAll().stream()
+                .filter(task ->isCompleted
+                .collect(java.util.stream.Collectors.toList());    }
 }
