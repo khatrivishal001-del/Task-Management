@@ -29,7 +29,7 @@ public class Task {
     
     @Builder.Default
     @Column(nullable = false)
-    private Boolean completed = false;
+    private boolean completed = false;
     
     @Column(name = "due_date")
     private LocalDateTime dueDate;
